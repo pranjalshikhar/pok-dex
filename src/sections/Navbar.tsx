@@ -1,30 +1,52 @@
 import pokeballIcon from "../assets/pokeball-icon.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useAppDispatch } from "../app/hooks";
+import { useEffect, useMemo } from "react";
 
 const Navbar = () => {
-  const NavigationRoutes = [
-    {
-      name: "Search",
-      route: "/search",
-    },
-    {
-      name: "Compare",
-      route: "/compare",
-    },
-    {
-      name: "Pokemon",
-      route: "/pokemon",
-    },
-    {
-      name: "My List",
-      route: "/list",
-    },
-    {
-      name: "About",
-      route: "/about",
-    },
-  ];
+  const NavigationRoutes = useMemo(
+    () => [
+      {
+        name: "Search",
+        route: "/search",
+      },
+      {
+        name: "Compare",
+        route: "/compare",
+      },
+      {
+        name: "Pokemon",
+        route: "/pokemon",
+      },
+      {
+        name: "My List",
+        route: "/list",
+      },
+      {
+        name: "About",
+        route: "/about",
+      },
+    ],
+    []
+  );
+
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const index = NavigationRoutes.findIndex(({ route }) =>
+      location.pathname.includes(route)
+    );
+    ul(index);
+  }, [location.pathname, NavigationRoutes]);
+
+  const ul = (index: number) => () => {
+    var underlines = document.querySelectorAll<HTMLElement>(".underline");
+    for (var i = 0; i < underlines.length; i++) {
+      underlines[i].style.transform = "translate3d(" + index * 100 + "%,0,0)";
+    }
+  };
 
   return (
     <nav>
@@ -32,13 +54,22 @@ const Navbar = () => {
         <img src={pokeballIcon} alt="pokeball-icon" />
       </div>
       <div className="data">
-        {NavigationRoutes.map(({ name, route }, index) => {
-          return (
-            <Link to={route} key={index}>
-              <li>{name}</li>
-            </Link>
-          );
-        })}
+        <ul>
+          <div className="underline"></div>
+          <div className="underline"></div>
+          <div className="underline"></div>
+          {NavigationRoutes.map(({ name, route }, index) => {
+            return (
+              <Link
+                to={route}
+                key={index}
+                // onClick={(e) => dispatch(resetRandomPokemons())}
+              >
+                <li>{name}</li>
+              </Link>
+            );
+          })}
+        </ul>
       </div>
       <div className="block">
         <GiHamburgerMenu />
