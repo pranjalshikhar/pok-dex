@@ -1,7 +1,6 @@
 import Background from "./components/Background";
 import Footer from "./sections/Footer";
 import Navbar from "./sections/Navbar";
-import Wrapper from "./sections/Wrapper";
 import "./scss/index.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Search from "./pages/Search";
@@ -25,7 +24,6 @@ const App = () => {
             <Route element={<Pokemon />} path="/pokemon/:id" />
             <Route element={<Navigate to="/pokemon/1" />} path="*" />
           </Routes>
-          <Wrapper />
           <Footer />
         </div>
       </BrowserRouter>

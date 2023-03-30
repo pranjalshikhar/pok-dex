@@ -1,5 +1,7 @@
+import Wrapper from "../sections/Wrapper";
+
 const Search = () => {
   return <div>Search</div>;
 };
 
-export default Search;
+export default Wrapper(Search);
