@@ -8,6 +8,7 @@ import { RootState } from "../store";
 import { setToasts } from "../slices/AppSlice";
 import { addDoc } from "firebase/firestore";
 import { pokemonListRef } from "../../utils/firebaseConfig";
+import { getUserPokemons } from "./getUserPokemons";
 
 export const addPokemonToList = createAsyncThunk(
   "pokemon/addPokemon",
@@ -30,15 +31,23 @@ export const addPokemonToList = createAsyncThunk(
           setToasts("Please Login in order to add Pokemon to your Collections.")
         );
       }
-      const index = userPokemons.findIndex((userPokemons: userPokemonsType) => {
-        return userPokemons.name === pokemon.name;
+      const index = userPokemons.findIndex((userPokemon: userPokemonsType) => {
+        return userPokemon.name === pokemon.name;
       });
       if (index === -1) {
         let types: string[] = [];
-        types = pokemon.types as string[];
+        if (!pokemon.stats) {
+          pokemon.types.forEach((type: any) =>
+            types.push(Object.keys(type).toString())
+          );
+        } else {
+          types = pokemon.types as string[];
+        }
         await addDoc(pokemonListRef, {
           pokemon: { id: pokemon.id, name: pokemon.name, types },
+          email: userInfo.email,
         });
+        await dispatch(getUserPokemons());
         return dispatch(setToasts(`${pokemon.name} added to your collection.`));
       } else {
         return dispatch(

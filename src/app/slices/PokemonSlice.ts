@@ -5,6 +5,7 @@ import {
   PokemontypeInitialState,
   generatedPokemonType,
 } from "../../utils/types";
+import { getUserPokemons } from "../reducers/getUserPokemons";
 
 const initialState: PokemontypeInitialState = {
   allPokemon: undefined,
@@ -43,6 +44,9 @@ export const PokemonSlice = createSlice({
     });
     builder.addCase(getPokemonData.fulfilled, (state, action) => {
       state.randomPokemons = action.payload;
+    });
+    builder.addCase(getUserPokemons.fulfilled, (state, action) => {
+      state.userPokemons = action.payload!;
     });
   },
 });
