@@ -42,3 +42,7 @@ button {
     background-color: rgba(219, 219, 219, 0.557);
   }
 }
+
+::selection {
+  background-color: #e21b5a;
+}
