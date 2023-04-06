@@ -10,6 +10,7 @@ import { debounce } from "../utils/debounce";
 
 const Search = () => {
   const dispatch = useAppDispatch();
+  const handleChange = debounce((value: string) => getPokemon(value), 300);
   const { allPokemon, randomPokemons } = useAppSelector(
     ({ pokemon }) => pokemon
   );
@@ -24,12 +25,9 @@ const Search = () => {
       const randomPokemonsId = clonedPokemons
         .sort(() => Math.random() - Math.random())
         .slice(0, 20);
-      // console.log(randomPokemonsId);
       dispatch(getPokemonData(randomPokemonsId));
     }
   }, [allPokemon, dispatch]);
-
-  const handleChange = debounce((value: string) => getPokemon(value), 300);
 
   const getPokemon = async (value: string) => {
     if (value.length) {

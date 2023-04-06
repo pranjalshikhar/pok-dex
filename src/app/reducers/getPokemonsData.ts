@@ -17,8 +17,12 @@ export const getPokemonData = createAsyncThunk(
         // console.log(pokemon);
         const {
           data,
-        }: { data: { id: number; types: { type: genericPokemonType }[] } } =
-          await axios.get(pokemon.url);
+        }: {
+          data: {
+            id: number;
+            types: { type: genericPokemonType }[];
+          };
+        } = await axios.get(pokemon.url);
         const types = data.types.map(
           ({ type: { name } }: { type: { name: string } }) => ({
             [name]: pokemonTypes[name],

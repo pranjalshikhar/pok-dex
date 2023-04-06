@@ -51,7 +51,7 @@
       &-title {
         text-align: center;
         cursor: pointer;
-        margin-top: 1rem;
+        margin-top: 2rem;
       }
       &-image {
         height: 10rem;
@@ -73,6 +73,7 @@
           }
           &-text {
             font-size: smaller;
+            text-transform: capitalize;
           }
         }
       }
