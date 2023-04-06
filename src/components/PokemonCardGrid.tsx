@@ -1,5 +1,5 @@
 import React from "react";
-import { pokemonTypeInterface, userPokemonTypes } from "../utils/types";
+import { pokemonTypeInterface, userPokemonsType } from "../utils/types";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { IoGitCompare } from "react-icons/io5";
 import { useAppDispatch } from "../app/hooks";
@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addToCompare } from "../app/slices/PokemonSlice";
 import { setToasts } from "../app/slices/AppSlice";
 
-const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonTypes[] }) => {
+const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonsType[] }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,7 +16,7 @@ const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonTypes[] }) => {
       <div className="pokemon-card-grid">
         {pokemons &&
           pokemons.length > 0 &&
-          pokemons.map((data: userPokemonTypes) => {
+          pokemons.map((data: userPokemonsType) => {
             return (
               <div className="pokemon-card" key={data.id}>
                 <div className="pokemon-card-list">

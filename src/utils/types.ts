@@ -19,10 +19,6 @@ export interface generatedPokemonType {
   types: pokemonTypeInterface[];
 }
 
-export interface userPokemonTypes extends generatedPokemonType {
-  firebaseId?: string;
-}
-
 export interface pokemonTypeInterface {
   [key: string]: {
     image: string;
@@ -33,7 +29,12 @@ export interface pokemonTypeInterface {
   };
 }
 
-export interface pokemonStatsType {
-  name: string;
-  value: string;
+export interface userPokemonsType extends generatedPokemonType {
+  firebaseId?: string;
 }
+
+export type pokemonStatsType =
+  | "vulnerable"
+  | "weakness"
+  | "strength"
+  | "resistance";
