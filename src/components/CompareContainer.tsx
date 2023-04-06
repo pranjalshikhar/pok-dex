@@ -2,7 +2,7 @@
 
 import React from "react";
 import {
-  pokemonStatsType,
+  pokemonStatType,
   pokemonTypeInterface,
   userPokemonsType,
 } from "../utils/types";
@@ -23,7 +23,7 @@ const CompareContainer = ({
   const navigate = useNavigate();
   const createStatsArray = (
     types: pokemonTypeInterface[],
-    statType: pokemonStatsType
+    statType: pokemonStatType
   ) => {
     const statsArray: { name: string; image: string }[] = [];
     const statsSet = new Set<string>();
