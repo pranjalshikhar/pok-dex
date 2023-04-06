@@ -117,7 +117,7 @@ const CompareContainer = ({
       {isEmpty && (
         <div className="empty">
           <button>
-            <FaPlus />
+            <FaPlus onClick={() => navigate("/search")} />
           </button>
           <h3>Add Pokemon For Comparison</h3>
         </div>
