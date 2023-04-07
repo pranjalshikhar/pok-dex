@@ -1,17 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { addDoc } from "firebase/firestore";
+import { pokemonListRef } from "../../utils/firebaseConfig";
+import { getUserPokemons } from "./getUserPokemons";
+import { setToast } from "../slices/AppSlice";
 import {
   pokemonStatsType,
   pokemonTypeInterface,
   userPokemonsType,
 } from "../../utils/types";
 import { RootState } from "../store";
-import { setToasts } from "../slices/AppSlice";
-import { addDoc } from "firebase/firestore";
-import { pokemonListRef } from "../../utils/firebaseConfig";
-import { getUserPokemons } from "./getUserPokemons";
 
 export const addPokemonToList = createAsyncThunk(
-  "pokemon/addPokemon",
+  "pokemon/addPkemon",
   async (
     pokemon: {
       id: number;
@@ -28,7 +28,7 @@ export const addPokemonToList = createAsyncThunk(
       } = getState() as RootState;
       if (!userInfo?.email) {
         return dispatch(
-          setToasts("Please Login in order to add Pokemon to your Collections.")
+          setToast("Please login in order to add pokemon to your collection.")
         );
       }
       const index = userPokemons.findIndex((userPokemon: userPokemonsType) => {
@@ -48,14 +48,12 @@ export const addPokemonToList = createAsyncThunk(
           email: userInfo.email,
         });
         await dispatch(getUserPokemons());
-        return dispatch(setToasts(`${pokemon.name} added to your collection.`));
+        dispatch(setToast(`${pokemon.name} added to your collection.`));
       } else {
-        return dispatch(
-          setToasts(`${pokemon.name} is already part of your collection.`)
-        );
+        dispatch(setToast(`${pokemon.name} already part of your collection.`));
       }
     } catch (err) {
-      console.error(err);
+      console.log({ err });
     }
   }
 );

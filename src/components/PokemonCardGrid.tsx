@@ -5,9 +5,9 @@ import { IoGitCompare } from "react-icons/io5";
 import { useAppDispatch } from "../app/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addToCompare } from "../app/slices/PokemonSlice";
-import { setToasts } from "../app/slices/AppSlice";
+import { setToast } from "../app/slices/AppSlice";
 import { addPokemonToList } from "../app/reducers/addPokemonToList";
-import { removePokemonFromList } from "../app/reducers/removePokemonFromList";
+import { removePokemonFromUserList } from "../app/reducers/removePokemonFromList";
 
 const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonsType[] }) => {
   const dispatch = useAppDispatch();
@@ -33,9 +33,9 @@ const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonsType[] }) => {
                       className="trash"
                       onClick={async () => {
                         await dispatch(
-                          removePokemonFromList({ id: data.firebaseId! })
+                          removePokemonFromUserList({ id: data.firebaseId! })
                         );
-                        dispatch(setToasts(`${data.name} removed from list`));
+                        dispatch(setToast(`${data.name} removed from list`));
                       }}
                     />
                   )}
@@ -45,7 +45,7 @@ const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonsType[] }) => {
                     onClick={() => {
                       dispatch(addToCompare(data));
                       dispatch(
-                        setToasts(`${data.name} added to the compare queue`)
+                        setToast(`${data.name} added to the compare queue`)
                       );
                     }}
                   />

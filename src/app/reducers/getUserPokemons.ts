@@ -1,13 +1,10 @@
-//@ts-nocheck
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../store";
 import { getDocs, query, where } from "firebase/firestore";
 import { pokemonListRef } from "../../utils/firebaseConfig";
-import { userPokemonsType } from "../../utils/types";
 import { defaultImages, images } from "../../utils/getPokemonImages";
 import { pokemonTypes } from "../../utils/pokemonTypes";
-
+import { RootState } from "../store";
+import { userPokemonsType } from "../../utils/types";
 export const getUserPokemons = createAsyncThunk(
   "pokemon/userList",
   async (args, { getState }) => {
@@ -27,13 +24,17 @@ export const getUserPokemons = createAsyncThunk(
         const userPokemons: userPokemonsType[] = [];
         fetchedPokemons.forEach(async (pokemon) => {
           const pokemons = await pokemon.data().pokemon;
+          // @ts-ignore
           let image = images[pokemons.id];
           if (!image) {
+            // @ts-ignore
             image = defaultImages[pokemons.id];
           }
           const types = pokemons.types.map((name: string) => ({
+            // @ts-ignore
             [name]: pokemonTypes[name],
           }));
+
           userPokemons.push({
             ...pokemons,
             firebaseId: pokemon.id,
@@ -45,7 +46,7 @@ export const getUserPokemons = createAsyncThunk(
       }
       return [];
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   }
 );
