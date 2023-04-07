@@ -15,7 +15,7 @@ function Login() {
     const provider = new GoogleAuthProvider();
     const {
       user: { email, uid },
-    } = await signInWithRedirect(firebaseAuth, provider);
+    } = await signInWithPopup(firebaseAuth, provider);
 
     if (email) {
       const firestoreQuery = query(usersRef, where("uid", "==", uid));
