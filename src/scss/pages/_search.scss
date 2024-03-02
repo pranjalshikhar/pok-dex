@@ -19,3 +19,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .search {
+    .pokemon-searchbar {
+      height: 5% !important;
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+}

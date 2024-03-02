@@ -1,10 +1,9 @@
-import React from "react";
 import pokeballLoader from "../assets/pokeball-loader.gif";
 
 const Loader = () => {
   return (
     <div className="loader">
-      <img src={pokeballLoader} alt="" />
+      <img src={pokeballLoader} alt="loader" />
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect } from "react";
 import pokeballIcon from "../assets/pokeball-icon.png";
 import { Link, useLocation } from "react-router-dom";
 import { resetRandomPokemons } from "../app/slices/PokemonSlice";
 import { useAppDispatch } from "../app/hooks";
+
 export default function Navbar() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const navigationRoutes = [
@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="block">
-        <img src={pokeballIcon} alt="" />
+        <img src={pokeballIcon} alt="icon" />
       </div>
       <div className="data">
         <ul>
@@ -67,7 +67,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="block">
-        <GiHamburgerMenu />
+        <img src={pokeballIcon} alt="icon" />
       </div>
     </nav>
   );

@@ -33,7 +33,7 @@ export default function Footer() {
     },
     {
       name: pokemonTabs.moves,
-      value: "Capable Moves",
+      value: "Moves",
     },
   ];
   return (
