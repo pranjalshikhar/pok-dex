@@ -20,7 +20,7 @@ const PokemonCardGrid = ({ pokemons }: { pokemons: userPokemonsType[] }) => {
           pokemons.length > 0 &&
           pokemons.map((data: userPokemonsType) => {
             return (
-              <div className="pokemon-card" key={data.id}>
+              <div className="pokemon-card gradient" key={data.id}>
                 <div className="pokemon-card-list">
                   {location.pathname.includes("/pokemon") ||
                   location.pathname.includes("/search") ? (

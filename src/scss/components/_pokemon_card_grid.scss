@@ -77,6 +77,20 @@
           }
         }
       }
+      .pokemon-card-title {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pokemon-card-grid-container {
+    .pokemon-card-grid {
+      display: flex;
+      flex-direction: column;
+      margin: 0 !important;
+      padding: 4rem !important;
     }
   }
 }

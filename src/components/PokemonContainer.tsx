@@ -1,5 +1,3 @@
-import React from "react";
-
 const PokemonContainer = ({ image }: { image: string }) => {
   return (
     <>

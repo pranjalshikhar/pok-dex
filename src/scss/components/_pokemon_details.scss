@@ -32,7 +32,6 @@
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.1rem;
   }
   background: linear-gradient(
         $bg-color ($dot-space - $dot-size),
@@ -40,4 +39,19 @@
       )
       center,
     $dot-color;
+}
+
+@media only screen and (max-width: 768px) {
+  .details {
+    padding: 10px;
+    left: 0.5rem;
+    width: inherit;
+    .name {
+      margin-bottom: 0.5rem;
+    }
+    h1,
+    h3 {
+      font-size: 14px;
+    }
+  }
 }
