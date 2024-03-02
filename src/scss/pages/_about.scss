@@ -6,11 +6,13 @@
   color: white;
   margin-top: 2rem;
   &-text {
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    text-align: center;
   }
   h1 {
-    font-size: 4rem;
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 14px;
   }
   &-image {
     height: 15rem;

@@ -1,13 +1,13 @@
 @use "sass:color";
 
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Syne", sans-serif;
 }
 body {
-  font-family: "Raleway", sans-serif;
   background-color: black;
 }
 
