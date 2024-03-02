@@ -1,13 +1,10 @@
-import { useAppDispatch } from "../app/hooks";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
-import { firebaseAuth, firebaseDB, usersRef } from "../utils/firebaseConfig";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { addDoc, getDocs, query, where } from "firebase/firestore";
 import { FcGoogle } from "react-icons/fc";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { useAppDispatch } from "../app/hooks";
 import { setUserStatus } from "../app/slices/AppSlice";
+import { firebaseAuth, usersRef } from "../utils/firebaseConfig";
+
 function Login() {
   const dispatch = useAppDispatch();
 
